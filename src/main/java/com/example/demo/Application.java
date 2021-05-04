@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Date;
 import java.util.stream.Stream;
 
 import org.springframework.boot.CommandLineRunner;
@@ -7,8 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.User;
+import com.example.demo.persistence.BookingRepository;
 import com.example.demo.persistence.DoctorRepository;
 import com.example.demo.persistence.UserRepository;
 
@@ -20,10 +23,13 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository, DoctorRepository doctorRepository) {
+    CommandLineRunner init(UserRepository userRepository, 
+                           DoctorRepository doctorRepository, 
+                           BookingRepository bookingRepository) {
         return args -> {
             initUsers(userRepository);
             initDoctors(doctorRepository);
+            initBookings(bookingRepository);
         };
     }
 
@@ -42,5 +48,10 @@ public class Application {
         });
         userRepository.findAll().forEach(System.out::println);
     }
+
+    private void initBookings(BookingRepository bookingRepository) {
+        Stream.of(new Booking(1L, 6L, new Date()), new Booking(2L, 7L, new Date())).forEach(bookingRepository::save);
+        bookingRepository.findAll().forEach(System.out::println);
+    }    
 
 }

@@ -33,6 +33,12 @@ public class Booking {
     public Booking() {
     }
 
+    public Booking(Long userId, Long doctorId, Date date) {
+        this.userId = userId;
+        this.doctorId = doctorId;
+        this.date = date;
+    }
+
     public long getId() {
         return id;
     }
