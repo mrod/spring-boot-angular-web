@@ -10,10 +10,12 @@
 //       available to the public, only in accordance with the terms
 //       of such license.
 //
-package com.example.demo.model;
+package com.example.demo.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {

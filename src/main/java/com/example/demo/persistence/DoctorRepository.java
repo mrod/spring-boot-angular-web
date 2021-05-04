@@ -15,8 +15,8 @@ package com.example.demo.persistence;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.User;
+import com.example.demo.model.Doctor;
 
 @Repository
-public interface DoctorRepository extends CrudRepository<User, Long> {
+public interface DoctorRepository extends CrudRepository<Doctor, Long> {
 }

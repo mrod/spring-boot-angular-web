@@ -19,26 +19,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.User;
-import com.example.demo.persistence.UserRepository;
+import com.example.demo.model.Doctor;
+import com.example.demo.persistence.DoctorRepository;
 
 @RestController
-public class UserController {
+public class DoctorController {
     
-    private final UserRepository userRepository;
+    private final DoctorRepository repository;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DoctorController(DoctorRepository repository) {
+        this.repository = repository;
     }
     
-    @GetMapping("/users")
-    public List<User> getUsers() {
-        return (List<User>) userRepository.findAll();
+    @GetMapping("/doctors")
+    public List<Doctor> getDoctors() {
+        return (List<Doctor>) repository.findAll();
     } 
     
-    @PostMapping("/users")
-    public void addUser(@RequestBody User user) {
-        userRepository.save(user);
+    @PostMapping("/doctors")
+    public void addUser(@RequestBody Doctor doctor) {
+        repository.save(doctor);
     }
     
 }
